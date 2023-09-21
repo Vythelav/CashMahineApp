@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Regition implements RegitionInterfase{
@@ -60,8 +59,8 @@ public class Regition implements RegitionInterfase{
         int pinCode = cr.nextInt();
         System.out.println("Введите cvv: ");
         int cvv = cr.nextInt();
-        Regition regition = new Regition(numberPhone,userPassword,userName,numberCard);
-        bankATM.cards = new ArrayList<>();
+        int id = (int) Math.random();
+        bankATM.regitions.add(new Bank(userName, id ,0.0, new BankCard(numberCard,pinCode,cvv) ,bankATM.regitions));
         bankATM.cards.add(new BankCard(numberCard,pinCode,cvv));
         System.out.println("Вы успешно создали аакаунт");
         System.out.println("А теперь войдите!");

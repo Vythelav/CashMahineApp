@@ -9,7 +9,7 @@ public class BankATM implements ATM {
     private Bank currentUser;
     private int remainingPinAttempts;
     private boolean next = false;
-    public ArrayList<Regition> regitions = new ArrayList<>();
+    public ArrayList<Bank> regitions = new ArrayList<Bank>();
     public ArrayList<BankCard> cards = new ArrayList<BankCard>();
     public ArrayList<Bank> bankAccounts = new ArrayList<>();
     public BankCard CardOne = new BankCard(123456,1234,123);

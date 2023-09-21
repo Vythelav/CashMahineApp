@@ -7,9 +7,9 @@ public class Bank implements BankUser {
     private int accountId;
     private double accountBalance;
     private BankCard userCard;
-    private ArrayList<Regition> numberPhone;
+    private ArrayList<Bank> numberPhone;
 
-    public Bank(String userName, int accountId, double accountBalance, BankCard userCard, ArrayList<Regition> numberPhone) {
+    public Bank(String userName, int accountId, double accountBalance, BankCard userCard, ArrayList<Bank> numberPhone) {
         this.userName = userName;
         this.accountId = accountId;
         this.accountBalance = accountBalance;
