@@ -57,24 +57,7 @@ public class BankATM implements ATM {
         bankAccounts.add(bankAccountsThree);
         bankAccounts.add(bankAccountsFore);
         bankAccounts.add(bankAccountsFife);
-        System.out.println("Введите номер карты:");
-        int card = sc.nextInt();
-        if (card > 0) {
-            insertCard(card);
-            next = true;
-        } else if (card == -1) {
-            System.out.println("Вы ввели не правильный тип данных");
-            terminate();
-        }
 
-        for (int i = 0; i <= remainingPinAttempts; i++) {
-            int pinCode = checkPinCode();
-            boolean x = false;
-            if(pinCode > 0) {
-                x = enterPin(pinCode);
-            }
-            if (x == true) {
-                while (currentCard != null) {
                     int method = checkMethod();
                     if(method == -1){
                         System.out.println("Вы ввели не правильный тип данных");
@@ -82,6 +65,7 @@ public class BankATM implements ATM {
                     }
                     if (method == 1) {
                         System.out.println(checkBalance());
+                        method = checkMethod();
                     } else if (method == 2) {
                         double sum = checkMethodsTwo();
                         if(sum == -1){
@@ -90,6 +74,7 @@ public class BankATM implements ATM {
                         }else {
                             deposit(sum);
                         }
+                        method = checkMethod();
                     } else if (method == 3) {
                         double sum = checkMethodsThree();
                         if(sum == -1){
@@ -98,17 +83,15 @@ public class BankATM implements ATM {
                         }else {
                             withdraw(sum);
                         }
+                        method = checkMethod();
                     } else if (method == 4) {
                         System.out.println("Вы вышли из терминала");
                         ejectCard();
                     }
-                }
+
                 return;
-            }else {
-                System.out.println("Вы ввели не правильный тип данных");
-                pinCode = checkPinCode();
-            }
-        }
+
+
     }
     @Override
     public void insertCard(int cardNumber) {
@@ -155,16 +138,19 @@ public class BankATM implements ATM {
     }
 
     @Override
-    public void deposit(double amount) {
-        double x =currentUser.getAccountBalance();
+    public Bank deposit (double amount){
+        Bank bank = new Bank();
+        bank.getUserCard();
+        double x = currentUser.getAccountBalance();
         if (amount > 0) {
             currentUser.setAccountBalance(x += amount);
             System.out.println("Успешно положили " + amount + "У вас на счету стало: " + x);
-        }else {
+        } else {
             System.out.println("Вы ввели не допустимую сумму");
         }
-    }
 
+        return null;
+    }
     @Override
     public void withdraw(double amount) {
         double x = currentUser.getAccountBalance();

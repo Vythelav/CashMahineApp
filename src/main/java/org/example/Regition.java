@@ -21,7 +21,7 @@ public class Regition implements RegitionInterfase{
     static Scanner cr = new Scanner(System.in);
     @Override
     public  void menu() {
-        System.out.println("Что вы хотите зделать?");
+        System.out.println("ПРИЛОЖЕНИЕ БАНКА");
         System.out.println("1-Зарегестрироваться ");
         System.out.println("2-Войти");
         int chose = cr.nextInt();
@@ -60,8 +60,7 @@ public class Regition implements RegitionInterfase{
         System.out.println("Введите cvv: ");
         int cvv = cr.nextInt();
         int id = (int) Math.random();
-        bankATM.regitions.add(new Bank(userName, id ,0.0, new BankCard(numberCard,pinCode,cvv) ,bankATM.regitions));
-        bankATM.cards.add(new BankCard(numberCard,pinCode,cvv));
+        bankATM.bankAccounts.add(new Bank(userName, id ,1, new BankCard(numberCard,pinCode,cvv) ,bankATM.regitions));
         System.out.println("Вы успешно создали аакаунт");
         System.out.println("А теперь войдите!");
         entrance();

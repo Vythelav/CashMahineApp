@@ -8,7 +8,7 @@ public interface ATM {
 
     double checkBalance();
 
-    void deposit(double amount);
+    Bank deposit(double amount);
 
     void withdraw(double amount);
 
